@@ -1,0 +1,46 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+	background-color: #CE0CE8;
+	font: 24px/1em Halvetica, Arial, sans-serif;
+	color: white;
+}
+
+#board{	
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#tictac {
+	margin: 0 auto;
+	text-align: center;
+	border-collapse: collapse;
+	font-size: 3.5em;
+	background-color: #9B00FF;
+	table-layout: fixed;
+}
+
+#tictac td {	
+	border: 5px solid #550CE8; 
+	width: 200px;
+	height: 200px;
+}
+
+#container {
+    display: flex;
+}
+
+#status,
+#room{
+    padding: 5px;
+    font-size: 1.5em;
+    width: 50vw;
+}
+
+#status{
+    text-align: right;
+}
