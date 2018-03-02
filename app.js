@@ -79,7 +79,7 @@ io.on('connection', socket => {
 
 });
 
-http.listen(8080,'https://mvvtictac.herokuapp.com/', () => {
+http.listen(8080,{host: 'mvvtictac.herokuapp.com', path: '/'}, () => {
     console.log('listening on *:8080');
 });
 
