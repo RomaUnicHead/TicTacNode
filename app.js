@@ -3,15 +3,16 @@
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);
-const { on } = require('socket.io')(http);
+const io = require('socket.io')(http);
 
 const rooms = [];
+let turnCount = 0;
 
 app
     .use('/', express.static(__dirname + '/public'));
 
 
-on('connection', socket => {
+io.on('connection', socket => {
     let found = false;
     let current;
     let x = {
@@ -59,10 +60,12 @@ on('connection', socket => {
             });
         })
         .on('end', () => {
+            turnCount = 0;
             rooms[current][0].emit('end');
             rooms[current][1].emit('end');
         })
         .on('turn', data => {
+            turnCount++;
             if(data.player.val === 'x') {
                 o.canTurn = true;
                 x.canTurn = false;
@@ -70,8 +73,8 @@ on('connection', socket => {
                 o.canTurn = false;
                 x.canTurn = true;
             }
-            rooms[current][0].emit('turn',data,x.canTurn);
-            rooms[current][1].emit('turn',data,o.canTurn);
+            rooms[current][0].emit('turn',data,x.canTurn,turnCount);
+            rooms[current][1].emit('turn',data,o.canTurn,turnCount);
         });
 
 });

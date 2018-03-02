@@ -28,7 +28,7 @@
             status.innerHTML = 'Ваш оппонент вылетел. Игра была удалена.';
             setTimeout(() => status.innerHTML = '',2000);
         })
-        .on('turn', (data,canTurn) => {
+        .on('turn', (data,canTurn,currentTurn) => {
             player.canTurn = canTurn;
             if(player.canTurn) {
                 status.innerHTML = 'Ваш ход';
@@ -36,8 +36,14 @@
                 status.innerHTML = 'Ход оппонента';
             }
             cells[data.index].innerHTML = data.player.val.toUpperCase();
+            if(end()) {
+                socket.emit('end');
+            }else if(currentTurn === 9 && !end()) {
+                status.innerHTML = 'Ничья';
+                resetBoard();
+            }
         })
-        .on('end', () => resetBoard());
+        .on('end', () =>  resetBoard());
 
     cells.forEach((cell, i) => {
         cell.onclick = () => {
@@ -71,10 +77,5 @@
             (cells[2].innerHTML === cells[4].innerHTML && cells[4].innerHTML === cells[6].innerHTML && cells[6].innerHTML !== '')
         );
     }
-    setInterval(() => {
-        if(end()) {
-            socket.emit('end');
-        }
-    }, 100);
 
 })();
