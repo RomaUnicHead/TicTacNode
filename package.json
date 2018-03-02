@@ -1,7 +1,7 @@
 {
-  "name": "tictac",
-  "version": "1.0.0",
-  "description": "",
+  "name": "tictacnode",
+  "version": "0.0.1",
+  "description": "This is a \"tictactoe\"-like game included multiplayer realized via Node.",
   "main": "server.js",
   "scripts": {
     "start": "node app.js"
@@ -10,9 +10,25 @@
   "license": "MIT",
   "devDependencies": {
     "express": "^4.16.2",
-    "socket.io": "^1.0.0"
+    "socketio": "^1.0.0"
   },
   "dependencies": {
     "npm": "^5.7.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xballyx/TicTacNode.git"
+  },
+  "keywords": [
+    "express",
+    "socket.io",
+    "node.js",
+    "javascript",
+    "tictactoe",
+    "game"
+  ],
+  "bugs": {
+    "url": "https://github.com/xballyx/TicTacNode/issues"
+  },
+  "homepage": "https://github.com/xballyx/TicTacNode#readme"
 }
