@@ -9,8 +9,8 @@ const rooms = [];
 let turnCount = 0;
 
 app
-    .use('/', express.static(__dirname + '/public'));
-
+    .use('/', express.static(__dirname + '/public'))
+    .set('port', (process.env.PORT || 4000));
 
 io.on('connection', socket => {
     let found = false;
@@ -79,7 +79,5 @@ io.on('connection', socket => {
 
 });
 
-http.listen(8080,{host: 'mvvtictac.herokuapp.com', path: '/'}, () => {
-    console.log('listening on *:8080');
-});
+http.listen(app.get('port'), {host: 'mvvtictac.herokuapp.com', path: '/'});
 
