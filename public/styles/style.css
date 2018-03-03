@@ -31,31 +31,29 @@ body {
 #chat {
 	height: 470px;
 	width: 470px;
+	background-color: #fff;	
 }
 
 #chat-window {
 	text-align: left;
 	color: black;
-	background-color: #fff;
 	height: 90%;
 	overflow-y: auto;
 }
 
 #message {
 	height: 10%;
+	border-top: 3px solid pink;
+ 	padding: 0 10px;
+ 	display: flex;
+  	flex-direction: column;
+  	justify-content: center;	
 }
 
 #message-text {
-	height: 80%;
-	width: 80%;
-	float: left;
-}
-
-#message-send {
-	float: right;
-	height: 100%;
-	width: 17%;
-	font-size: 0.8em;
+	left: 5px;
+	bottom: 50%;
+	border: 0;
 }
 
 table {	

@@ -87,8 +87,11 @@ io.on('connection', socket => {
             rooms[current][0].emit('end',winner);
             rooms[current][1].emit('end',winner);
         })
+        //обработка сообщений. сообщение текст сообщения с отправителем приходит и отправляется обратно 
+        //на отображение
         .on('new message', (sender,text) => rooms[current].forEach(player => player.emit('new message', sender, text)));
 
 });
 
-http.listen(app.get('port'), {host: 'mvvtictac.herokuapp.com', path: '/'});
+//http.listen(app.get('port'), {host: 'mvvtictac.herokuapp.com', path: '/'});
+http.listen(4000);

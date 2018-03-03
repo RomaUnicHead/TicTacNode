@@ -67,7 +67,7 @@
             resetBoard();
         })
         .on('new message', (sender, text) => {
-            chat.innerHTML += `<div style="background-color: ${sender === player.val ? '#eee' : '#fff'};">${sender}: ${text}</div>`;           
+            chat.innerHTML += `<div style="padding:5px 10px;background-color: ${sender === player.val ? '#eee' : '#fff'};">${sender}: ${text}</div>`;           
             chat.scrollTop = chat.scrollHeight;
         });
 
