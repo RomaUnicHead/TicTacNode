@@ -4,18 +4,19 @@
 }
 body {
 	background-color: #CE0CE8;
-	font: 24px/1em Halvetica, Arial, sans-serif;
+	font: 16px/1.5em Halvetica, Arial, sans-serif;
 	color: white;
 }
 
 #board{	
-	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	text-align: center;
 }
 
 #tictac {
+	height: 80vh;
 	margin: 0 auto;
 	text-align: center;
 	border-collapse: collapse;
@@ -32,6 +33,12 @@ body {
 
 #container {
     display: flex;
+    height: 15vh;
+}
+
+#copy {
+	height: 5vh;
+	line-height: 5vh;
 }
 
 #status,
@@ -41,6 +48,11 @@ body {
     width: 50vw;
 }
 
+#room{
+	text-align: left;
+}
+
 #status{
     text-align: right;
 }
+

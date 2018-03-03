@@ -1,6 +1,6 @@
 {
   "name": "tictacnode",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "This is a \"tictactoe\"-like game included multiplayer realized via Node.",
   "main": "app.js",
   "scripts": {

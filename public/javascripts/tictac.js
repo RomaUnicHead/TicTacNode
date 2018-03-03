@@ -1,6 +1,6 @@
 (() => {
     'use strict';
-    //НЕ ВЫВОДИТ ПОБЕДИТЕЛЯ
+
     const cells = document.querySelectorAll('td');
     const status = document.getElementById('status');
     const room = document.getElementById('room');
@@ -25,8 +25,8 @@
             }
         })
         .on('opp-disc', () => {
-            status.innerHTML = 'Ваш оппонент вылетел. Игра была удалена.';
-            setTimeout(() => status.innerHTML = '',2000);
+            status.innerHTML = 'Ваш оппонент вылетел. Ждём нового.';
+            resetBoard();
         })
         .on('turn', (data,canTurn,currentTurn) => {
             player.canTurn = canTurn;
@@ -37,13 +37,25 @@
             }
             cells[data.index].innerHTML = data.player.val.toUpperCase();
             if(end()) {
-                socket.emit('end');
-            }else if(currentTurn === 9 && !end()) {
-                status.innerHTML = 'Ничья';
+                socket.emit('end',data.player.val);
+            }else if(currentTurn > 8 && !end()) {
+                socket.emit('draw');
+                if(player.canTurn) {
+                    status.innerHTML = 'Ничья. Ваш ход';
+                } else {
+                    status.innerHTML = 'Ничья. Ход оппонента';
+                }
                 resetBoard();
             }
         })
-        .on('end', () =>  resetBoard());
+        .on('end', winner =>  {
+            if(player.val === winner) {
+                status.innerHTML = 'С победой! Ход оппонента.';                
+            } else {
+                status.innerHTML = 'Вы проиграли. Ваш ход';
+            }
+            resetBoard();
+        });
 
     cells.forEach((cell, i) => {
         cell.onclick = () => {
