@@ -36,6 +36,7 @@
         .on('opp-disc', () => {
             status.innerHTML = 'Ваш оппонент вылетел. Ждём нового.';
             resetBoard();
+            started = false;
         })
         .on('turn', (data,canTurn,currentTurn) => {
             player.canTurn = canTurn;
