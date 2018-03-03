@@ -4,11 +4,19 @@
     const cells = document.querySelectorAll('td');
     const status = document.getElementById('status');
     const room = document.getElementById('room');
-    const tictac = document.getElementById('tictac');
+    const sendBtn = document.getElementById('message-send');
+    const sendMsg = document.getElementById('message-text');
+    const chat = document.getElementById('chat-window');
     const socket = io();
 
     let player = {};
     let started = false;
+
+    document.addEventListener('keydown', (e) => {
+        if(e.keyCode === 13) {
+            sendMessage();
+        }
+    });
 
     socket
         .on('connected', roomNum => room.innerHTML = 'Комната: ' + roomNum)
@@ -16,7 +24,7 @@
             status.innerHTML = 'Ждём второго игрока';
         })
         .on('start', pl => {
-            status.innerHTML = 'Игра началась!';
+            chat.innerHTML = ''; 
             player = pl;
             started = true;
             if(player.canTurn) {
@@ -56,6 +64,10 @@
                 status.innerHTML = 'Вы проиграли. Ваш ход';
             }
             resetBoard();
+        })
+        .on('new message', (sender, text) => {
+            chat.innerHTML += `<div style="background-color: ${sender === player.val ? '#eee' : '#fff'};">${sender}: ${text}</div>`;           
+            chat.scrollTop = chat.scrollHeight;
         });
 
     cells.forEach((cell, i) => {
@@ -73,6 +85,17 @@
             }
         }
     });
+
+    sendBtn.onclick = () => {
+        sendMessage();
+    };
+
+    function sendMessage() {
+        if(sendMsg.value !== '' && started) {
+            socket.emit('new message', player.val, sendMsg.value);
+            sendMsg.value = '';
+        }
+    }
 
     function resetBoard() {
         cells.forEach(cell => cell.innerHTML = '');

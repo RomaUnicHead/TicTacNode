@@ -86,9 +86,9 @@ io.on('connection', socket => {
             turnCount = 0;
             rooms[current][0].emit('end',winner);
             rooms[current][1].emit('end',winner);
-        });
+        })
+        .on('new message', (sender,text) => rooms[current].forEach(player => player.emit('new message', sender, text)));
 
 });
 
 http.listen(app.get('port'), {host: 'mvvtictac.herokuapp.com', path: '/'});
-

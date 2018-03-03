@@ -23,6 +23,41 @@ body {
 	justify-content: center;
 }
 
+#content {
+	display: flex;
+	justify-content: center;
+}	
+
+#chat {
+	height: 470px;
+	width: 470px;
+}
+
+#chat-window {
+	text-align: left;
+	color: black;
+	background-color: #fff;
+	height: 90%;
+	overflow-y: auto;
+}
+
+#message {
+	height: 10%;
+}
+
+#message-text {
+	height: 80%;
+	width: 80%;
+	float: left;
+}
+
+#message-send {
+	float: right;
+	height: 100%;
+	width: 17%;
+	font-size: 0.8em;
+}
+
 table {	
 	text-align: center;
 	border-collapse: collapse;

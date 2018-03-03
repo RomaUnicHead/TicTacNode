@@ -12,7 +12,8 @@
         <div id="status"></div>
     </div>
     <div id="tictac">
-        <table>
+        <div id="content">
+            <table>
                 <tr>
                     <td></td>
                     <td></td>
@@ -28,7 +29,15 @@
                     <td></td>
                     <td></td>
                 </tr>
-        </table>            
+            </table>  
+            <div id="chat">
+                <div id="chat-window"></div>
+                <div id="message">
+                    <input id="message-text" type="text"><input id="message-send" type="button" value="Отправить">
+                </div>
+            </div>
+        </div>
+     
     </div>
     <div id="copy">&copy; Created by Medolovich Vladimir, 2018</div>
 </div><script src="/socket.io/socket.io.js"></script>
