@@ -4,6 +4,7 @@
     const cells = document.querySelectorAll('td');
     const status = document.getElementById('status');
     const room = document.getElementById('room');
+    const tictac = document.getElementById('tictac');
     const socket = io();
 
     let player = {};
