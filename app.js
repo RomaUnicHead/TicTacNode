@@ -90,6 +90,5 @@ io.on('connection', socket => {
 
 });
 
-//http.listen(app.get('port'), {host: 'mvvtictac.herokuapp.com', path: '/'});
-http.listen(app.get('port'));
+http.listen(app.get('port'), {host: 'mvvtictac.herokuapp.com', path: '/'});
 

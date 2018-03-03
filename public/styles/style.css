@@ -18,6 +18,12 @@ body {
 #tictac {
 	height: 80vh;
 	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+table {	
 	text-align: center;
 	border-collapse: collapse;
 	font-size: 3.5em;
@@ -27,8 +33,8 @@ body {
 
 #tictac td {	
 	border: 5px solid #550CE8; 
-	width: 200px;
-	height: 200px;
+	width: 150px;
+	height: 150px;
 }
 
 #container {
