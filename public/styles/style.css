@@ -33,12 +33,13 @@ body {
 
 #container {
     display: flex;
-    height: 15vh;
+    height: 10vh;
+    line-height: 10vh;
 }
 
 #copy {
-	height: 5vh;
-	line-height: 5vh;
+	height: 10vh;
+	line-height: 10vh;
 }
 
 #status,
