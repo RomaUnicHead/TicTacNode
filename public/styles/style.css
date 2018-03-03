@@ -34,7 +34,6 @@ body {
 #container {
     display: flex;
     height: 10vh;
-    line-height: 10vh;
 }
 
 #copy {
