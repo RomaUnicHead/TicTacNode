@@ -9,8 +9,8 @@ const rooms = [];
 let turnCount = 0;
 
 app
-    .use('/', express.static(__dirname + '/public'))
-    .set('port', (process.env.PORT || 4000));
+    .set('port', (process.env.PORT || 4000))
+    .use('/', express.static(__dirname + '/public'));
 
 io.on('connection', socket => {
     let found = false;
