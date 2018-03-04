@@ -8,7 +8,9 @@
 <body>
 <div id="board">
     <div id="container">
-        <div id="room"></div>
+        <div id="room">
+            <p id="show-rooms-btn"></p>
+        </div>
         <div id="status"></div>
     </div>
     <div id="tictac">
@@ -40,7 +42,9 @@
      
     </div>
     <div id="copy">&copy; Created by Medolovich Vladimir, 2018</div>
-</div><script src="/socket.io/socket.io.js"></script>
+    <div id="room-list"></div>
+</div>
+<script src="/socket.io/socket.io.js"></script>
 <script src="javascripts/tictac.js" type="text/javascript"></script>
 </body>
 </html>

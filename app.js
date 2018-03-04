@@ -32,6 +32,7 @@ io.on('connection', socket => {
             found = true;
             current = i;
             console.log(`Room ${current} found.`);
+            break;
         }
     }
     if(found === false) {       
@@ -56,12 +57,12 @@ io.on('connection', socket => {
         //если игрок вышел из комнаты будучи там один, комната освобождается
         .on('disconnect', () => {
             if(rooms[current].length === 2) {
-                io.emit('opp-disc');
                 if(rooms[current][0].disconnected) {
                     rooms[current].shift();
                 } else if(rooms[current][1].disconnected) {
                     rooms[current].pop();
-                }                
+                }    
+                rooms[current][0].emit('opp-disc');            
             } else {
                 rooms[current] = [];
             }
@@ -87,10 +88,14 @@ io.on('connection', socket => {
             rooms[current][0].emit('end',winner);
             rooms[current][1].emit('end',winner);
         })
-        //обработка сообщений. текст сообщения с именем отправителя приходит для отправления обратно 
-        //на отображение игрокам
-        .on('new message', (sender,text) => rooms[current].forEach(player => player.emit('new message', sender, text)));
-
+        //обработка сообщений. текст сообщения с именем отправителя приходит для отображения игрокам
+        .on('new message', (sender,text) => rooms[current].forEach(player => player.emit('new message', sender, text)))
+        //при вызове, возвращает количество игроков в каждой комнате
+        .on('show rooms', () => {
+            let sendDataRooms = rooms.map(x => x.length);
+            socket.emit('show rooms', sendDataRooms);
+        });
 });
 
-http.listen(app.get('port'), {host: 'mvvtictac.herokuapp.com', path: '/'});
+http.listen(4000);
+//http.listen(app.get('port'), {host: 'mvvtictac.herokuapp.com', path: '/'});

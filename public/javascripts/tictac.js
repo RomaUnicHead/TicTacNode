@@ -3,14 +3,16 @@
 
     const cells = document.querySelectorAll('td');
     const status = document.getElementById('status');
-    const room = document.getElementById('room');
-    const sendBtn = document.getElementById('message-send');
     const sendMsg = document.getElementById('message-text');
     const chat = document.getElementById('chat-window');
+    const roomBtn = document.getElementById('show-rooms-btn');
+    const roomList = document.getElementById('room-list');
     const socket = io();
 
     let player = {};
-    let started = false;
+    let started = false; 
+    let shown = false;
+    let clicked = false;
 
     document.addEventListener('keydown', (e) => {
         if(e.keyCode === 13) {
@@ -18,8 +20,18 @@
         }
     });
 
+    roomBtn.onclick = () => {
+        if(clicked === false) {
+            socket.emit('show rooms');
+            clicked = true;
+        } else {
+            roomList.style.display = 'none';
+            clicked = false;
+        }
+    }
+
     socket
-        .on('connected', roomNum => room.innerHTML = 'Комната: ' + roomNum)
+        .on('connected', roomNum => roomBtn.innerHTML = 'Комната: ' + roomNum)
         .on('wait', () => {
             status.innerHTML = 'Ждём второго игрока';
         })
@@ -67,9 +79,20 @@
             resetBoard();
         })
         .on('new message', (sender, text) => {
-            chat.innerHTML += `<div style="padding:5px 10px;background-color: ${sender === player.val ? '#eee' : '#fff'};">${sender}: ${text}</div>`;           
+            chat.innerHTML += `<div style="padding:5px 10px;background-color: ${sender === player.val ? '#83b6a8' : '#93c5c1'};">${sender}: ${text}</div>`;           
             chat.scrollTop = chat.scrollHeight;
-        });
+        })
+        .on('show rooms', rooms => {
+            roomList.style.display = 'block';
+            if(shown === false) {
+                roomList.innerHTML += '<ul>';
+                for(let i = 0, max = rooms.length; i < max; i++) {
+                    roomList.innerHTML += `<li>Комната ${i}:<ul><li>${rooms[i]}</li></ul></li>`;
+                }
+                roomList.innerHTML += '</ul>';
+                shown = true;
+            }
+        });  
 
     cells.forEach((cell, i) => {
         cell.onclick = () => {
@@ -86,10 +109,6 @@
             }
         }
     });
-
-    sendBtn.onclick = () => {
-        sendMessage();
-    };
 
     function sendMessage() {
         if(sendMsg.value !== '' && started) {

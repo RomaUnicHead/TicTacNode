@@ -3,7 +3,7 @@
     margin: 0;
 }
 body {
-	background-color: #CE0CE8;
+	background-color: #8f9ca7;
 	font: 16px/1.5em Halvetica, Arial, sans-serif;
 	color: white;
 }
@@ -13,6 +13,7 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	text-align: center;
+	position: relative;
 }
 
 #tictac {
@@ -26,24 +27,26 @@ body {
 #content {
 	display: flex;
 	justify-content: center;
+	-webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
 }	
 
 #chat {
 	height: 470px;
 	width: 470px;
-	background-color: #fff;	
+	background-color: #93c5c1;	
 }
 
 #chat-window {
 	text-align: left;
-	color: black;
 	height: 90%;
 	overflow-y: auto;
 }
 
 #message {
 	height: 10%;
-	border-top: 3px solid pink;
+	border-top: 3px solid #83b6a8;
  	padding: 0 10px;
  	display: flex;
   	flex-direction: column;
@@ -54,20 +57,23 @@ body {
 	left: 5px;
 	bottom: 50%;
 	border: 0;
+	background-color: #93c5c1;
+	color: 	white;
 }
 
 table {	
 	text-align: center;
 	border-collapse: collapse;
 	font-size: 3.5em;
-	background-color: #9B00FF;
+	background-color: #a3b690;
 	table-layout: fixed;
 }
 
 #tictac td {	
-	border: 5px solid #550CE8; 
+	border: 5px solid #88a587; 
 	width: 150px;
 	height: 150px;
+	cursor: pointer;
 }
 
 #container {
@@ -89,9 +95,33 @@ table {
 
 #room{
 	text-align: left;
+    text-decoration: underline;
+}
+
+#room p{
+	display: inline;
+    cursor: pointer;
 }
 
 #status{
     text-align: right;
+    cursor: default;
 }
 
+#room-list {
+	color: black;
+	z-index: 6;
+	height: 300px;
+	width: 300px;
+	background-color: white;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+  	margin: -150px 0 0 -150px;
+  	overflow-y: auto;
+  	overflow-x: auto;
+  	display: none;
+	-webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+}
