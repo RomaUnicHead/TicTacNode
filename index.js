@@ -100,5 +100,4 @@ io.on("connection", function(socket) {
         .on("set nickname", (nickname) => socket.nickname = nickname);
 });
 
-http.listen(PORT, () => console.log("Listening on " + PORT));
-//http.listen(PORT, {host: "mvvtictac.herokuapp.com", path: "/"});
+http.listen(PORT, {host: "mvvtictac.herokuapp.com", path: "/"});
