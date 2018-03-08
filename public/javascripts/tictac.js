@@ -138,7 +138,7 @@ const tictac = (function TicTacNode() {
             if(roomBtnShown === false) {
                 let inner = "<ul>";
                 rooms.forEach(function(room,i) {
-                    if(room.length > 1) {
+                    if(room.length > 0) {
                         inner += `<li id="room-number">Комната ${i}<ul>`;
                         room.forEach((nickname) => inner += `<li id="player">${nickname !== null ? nickname : "Пользователь не авторизовался"}</li>`);
                         inner += "</ul></li>";
