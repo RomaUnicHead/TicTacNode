@@ -1,3 +1,4 @@
+/*Общие стили*/
 * {
     padding: 0;
     margin: 0;
@@ -8,29 +9,102 @@ body {
 	color: white;
 }
 
-#board{	
+#wrapper{	
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	text-align: center;
 	position: relative;
 }
+/*Стили для верхнего блока с информацией*/
+#info {
+    display: flex;
+    height: 10vh;
+}
 
+#status,
+#room{
+    padding: 5px;
+    font-size: 1.5em;
+    width: 50vw;
+}
+#room{
+	text-align: left;
+    text-decoration: underline;
+}
+
+#room p{
+	display: inline;
+    cursor: pointer;
+}
+
+#status{
+    text-align: right;
+    cursor: default;
+}
+/*Стили для списка комнат*/
+#room-list {
+	text-align: left;
+	cursor: pointer;
+	color: black;
+	z-index: 5;
+	height: 300px;
+	width: 300px;
+	background-color: #8f9ca7;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+  	margin: -150px 0 0 -150px;
+  	overflow-y: auto;
+  	overflow-x: auto;
+  	display: none;
+	-webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+}
+#room-list li {
+	list-style-type: none; 
+	padding: 10px;
+}
+#room-list #room-number {
+	background-color: #93c5c1;
+	border-bottom: 1px solid #8f9ca7;
+}
+#room-list #player {
+	background-color: #88a587;
+	border-bottom: 1px solid #93c5c1;
+}
+/*Стили для поля и чата*/
 #tictac {
-	height: 80vh;
+	height: 90vh;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 }
 
-#content {
+#container	 {
 	display: flex;
-	justify-content: center;
+	margin: 0 auto;
 	-webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
 	box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
 }	
+
+table {	
+	text-align: center;
+	border-collapse: collapse;
+	font-size: 3.5em;
+	background-color: #a3b690;
+	table-layout: fixed;
+}
+
+td {	
+	border: 5px solid #88a587; 
+	width: 150px;
+	height: 150px;
+	cursor: pointer;
+}
 
 #chat {
 	height: 470px;
@@ -60,68 +134,34 @@ body {
 	background-color: #93c5c1;
 	color: 	white;
 }
-
-table {	
-	text-align: center;
-	border-collapse: collapse;
-	font-size: 3.5em;
-	background-color: #a3b690;
-	table-layout: fixed;
-}
-
-#tictac td {	
-	border: 5px solid #88a587; 
-	width: 150px;
-	height: 150px;
-	cursor: pointer;
-}
-
-#container {
-    display: flex;
-    height: 10vh;
-}
-
+/*Стили для блока с копирайтом*/
 #copy {
-	height: 10vh;
-	line-height: 10vh;
+	height: 5vh;
+	line-height: 5vh;
+	text-align: center;
 }
-
-#status,
-#room{
-    padding: 5px;
-    font-size: 1.5em;
-    width: 50vw;
-}
-
-#room{
+/*Стили для окна выбора никнейма*/
+#nickname-setup {
 	text-align: left;
-    text-decoration: underline;
-}
-
-#room p{
-	display: inline;
-    cursor: pointer;
-}
-
-#status{
-    text-align: right;
-    cursor: default;
-}
-
-#room-list {
-	color: black;
 	z-index: 6;
-	height: 300px;
-	width: 300px;
-	background-color: white;
+	height: 100%;
+	width: 100%;
+	background-color: #93c5c1;
 	position: absolute;
-	top: 50%;
-	left: 50%;
-  	margin: -150px 0 0 -150px;
-  	overflow-y: auto;
-  	overflow-x: auto;
-  	display: none;
-	-webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
-	-moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
-	box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    transition: left 0.5s;
+}
+
+#nickname {
+	width: 30%;
+	height: 40px;
+	font-size: 2em;
+	text-align: center;
+	background-color: #93c5c1;
+	border: 0;
+	border-bottom: 3px solid #83b6a8;
 }
